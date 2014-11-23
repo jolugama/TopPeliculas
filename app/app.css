@@ -1,0 +1,90 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+
+
+.envoltorioPelicula {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #999;
+  background: #eee;
+}
+
+.envoltorioPelicula2 {
+  float:left;
+  width:360px;
+  height: 450px;
+  
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 15px #999;
+  background: #eee;
+}
+
+/* Para que el scroll no tape el redondeo de las esquinas. el anterior envoltorio tiene un margin*/
+.envoltorioMargen {
+  overflow-y:scroll;
+  width:100%;
+  height: 100%;
+}
+
+.mititulo{
+  font-size: 2.0em;
+  font-weight: bold;
+}
+
+button{
+  margin-left:5px;
+}
+select{
+  margin-bottom: 5px;
+}
+
+limpiarFloat{
+  clear:both;
+}
+
+@media (min-width: 768px) { 
+  .envoltorioGeneral{
+    column-count: 3;
+    column-gap: 0px;
+    -moz-column-count:3;
+    -moz-column-gap:0px;
+    -webkit-column-count:3;
+    -webkit-column-gap: 20px;
+  }
+
+  .envoltorioGeneral2{
+  }
+}

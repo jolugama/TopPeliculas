@@ -1,0 +1,49 @@
+<div>
+	<!-- Elección de la lista -->
+	<select ng-model="listaView" ng-options="lista.name for lista in listas" ng-change="cargaPeliculas(paisView.code,listaView.code,opcionesScore)" class="form-control"></select>
+	<select ng-model="paisView" ng-options="pais.name for pais in paises" ng-change="cargaPeliculas(paisView.code,listaView.code,opcionesScore)" class="form-control"></select>
+</div>
+<div class="radio">
+	<label>
+		<input type="radio"  ng-model="opcionesScore"  value="critics" ng-change="cargaPeliculas(paisView.code,listaView.code,opcionesScore)">
+		Critics Score
+	</label>
+</div>
+<div class="radio">
+	<label>
+		<input type="radio" ng-model="opcionesScore"   value="audience" ng-change="cargaPeliculas(paisView.code,listaView.code,opcionesScore)">
+		Audience Score
+	</label>
+</div>
+
+<div>
+	<!-- Elección del idioma por botones. otra forma -->
+	<!-- <button  class="btn btn-info" ng-click="cargaPeliculas(pais.code,listaView.code)" ng-repeat="pais in paises" > {{pais.name}}</button> -->
+</div>
+
+
+<div class="envoltorioGeneral2">
+<!-- el true es para reverse -->
+	<div ng-repeat="p in peliculas | orderBy : filtro : true">
+		<div ng-if="(p.ratings.critics_score > 60 &&  filtro==='ratings.critics_score') || (p.ratings.audience_score > 60 && filtro==='ratings.audience_score')">
+			
+			<div class="envoltorioPelicula2">
+				<div class="envoltorioMargen">[{{$index+1}}]
+					<div ng-init="x = p.ratings.critics_score/10">  <rating ng-model="x" max="10" readonly=true></rating>  {{p.ratings.critics_score/10}} Critics
+						<div ng-init="x2 = p.ratings.audience_score/10">  <rating ng-model="x2" max="10" readonly=true></rating>  {{p.ratings.audience_score/10}} Audience
+							<h2>{{p.title}}</h2> 
+
+							<img width="70" ng-src="{{p.posters.original}}" alt="{{p.title}}">
+							<p>{{p.synopsis}}</p>
+
+						</div>
+					</div>
+				</div>
+
+			</div> 
+
+
+<!-- <p>
+  Showing of 'interpolate' filter:
+   {{ 'Current version is v%VERSION%.' | interpolate }}
+</p> -->
